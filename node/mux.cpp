@@ -47,6 +47,7 @@ private:
     double max_speed, max_steering_angle;
     // For keyboard driving
     double prev_key_velocity=0.0;
+    double prev_steer_ang=0.0;
     double keyboard_speed;
     double keyboard_steer_ang;
 
@@ -219,6 +220,9 @@ public:
                 // Steer right and keep speed
                 desired_steer = -keyboard_steer_ang;
                 desired_velocity = prev_key_velocity;
+            } else if (msg.data == "z") {
+                desired_steer = 2 * prev_steer_ang;
+                desired_velocity = prev_key_velocity;
             } else if (msg.data == " ") {
                 // publish zeros to slow down/straighten out car
             } else {
@@ -228,6 +232,7 @@ public:
 
             if (publish) {
                 publish_to_drive(desired_velocity, desired_steer);
+                prev_steer_ang = desired_steer;
                 prev_key_velocity = desired_velocity;
             }
         }
