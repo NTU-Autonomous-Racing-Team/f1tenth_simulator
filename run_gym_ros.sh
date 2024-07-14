@@ -5,16 +5,24 @@ create_container (){
     docker run --rm -it\
     --name ${container_name} \
     -h ${container_name} \
-	--env="DISPLAY"\
-	--env="QT_X11_NO_MITSHM=1" \
+    --env="DISPLAY" \
+    --env="QT_X11_NO_MITSHM=1" \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-	--volume="${XAUTHORITY}:/root/.Xauthority" \
-    --privileged \
-    --net=host \
-    -v $(pwd)/../f1tenth_ws:/root/f1tenth_ws \
     -v $(pwd)/sim_ws:/sim_ws \
     f1tenth:gym_ros_foxy \
     run_sim.sh
+
+	# --env="DISPLAY"\
+	# --env="QT_X11_NO_MITSHM=1" \
+    # --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+	# --volume="${XAUTHORITY}:/root/.Xauthority" \
+    # --privileged \
+    # --net=host \
+    # -v $(pwd)/../f1tenth_ws:/root/f1tenth_ws \
+    # -v $(pwd)/sim_ws:/sim_ws \
+    # f1tenth:gym_ros_foxy \
+    # run_sim.sh
+
 }
 
 rm_container (){

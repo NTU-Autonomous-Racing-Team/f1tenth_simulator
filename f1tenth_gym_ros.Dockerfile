@@ -56,12 +56,7 @@ RUN printf \
 source /opt/ros/foxy/setup.bash \n \
 source /sim_ws/install/setup.bash \n " \
 >> /root/.bashrc
-#ros2 launch f1tenth_gym_ros gym_bridge_launch.py" \
-#>> /root/.bashrc
 
-#RUN echo "source /opt/ros/foxy/setup.bash" >> /root/.bashrc
-#RUN echo "source /sim_ws/install/setup.bash" >> /root/.bashrc
-#RUN echo "ros2 launch f1tenth_gym_ros gym_bridge_launch.py & " >> /root/.bashrc
 RUN touch run_sim.sh
 RUN chmod +x run_sim.sh
 RUN printf \	
@@ -85,3 +80,38 @@ ENTRYPOINT ["/bin/bash"]
 
 #BUILD COMMAND
 #docker build -f f1tenth_gym_ros.Dockerfile -t f1tenth:gym_ros_foxy .
+
+# 1  apt update
+# 2  apt-get -y dist-upgrade
+# 3  pip3 install transforms3d
+# 4  git clone https://github.com/f1tenth/f1tenth_gym
+# 5  cd f1tenth_gym &&     pip3 install -e .
+# 6  ls
+# 7  cd ..
+# 8  mkdir -p sim_ws/src
+# 9  cd sim_ws/src/
+# 10  git clone https://github.com/f1tenth/f1tenth_gym_ros.git
+# 11  cd ..
+# 12  source /opt/ros/foxy/setup.bash
+# 13  rosdep install -i --from-path src --rosdistro foxy -y && colcon build
+# 14  ls
+# 15  source install/local_setup.bash
+# 16  ros2 launch f1tenth_gym_ros gym_bridge_launch.py 
+# 17  ks
+# 18  ls
+# 19  cd sim_ws/
+# 20  ls
+# 21  source install/local_setup.bash
+# 22  colcon build
+# 23  source install/local_setup.bash
+# 24  source /opt/ros/foxy/setup.bash
+# 25  source install/local_setup.bash
+# 26  ros2 launch f1tenth_gym_ros gym_bridge_launch.py 
+# 27  ls
+# 28  ros2 launch f1tenth_gym_ros gym_bridge_launch.py 
+# 29  source /opt/ros/foxy/setup.bash
+# 30  source ./sim_ws/install/local_setup.bash
+# 31  ros2 launch f1tenth_gym_ros gym_bridge_launch.py 
+# 32  apt install xcb
+# 33  ros2 launch f1tenth_gym_ros gym_bridge_launch.py 
+# 34  history
