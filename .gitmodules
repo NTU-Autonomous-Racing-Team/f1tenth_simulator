@@ -1,0 +1,3 @@
+[submodule "sim_ws/src"]
+	path = sim_ws/src
+	url = https://github.com/f1tenth/f1tenth_gym_ros.git
