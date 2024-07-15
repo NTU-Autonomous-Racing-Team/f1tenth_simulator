@@ -2,6 +2,9 @@
 
 The f1tenth simulator from `f1tenth_gym_ros` is containerised to avoid dependency issues and to shortcut setup.
 
+## System
+Ubuntu 20.04
+
 ## Setup
 
 1. Build Dockerfile
