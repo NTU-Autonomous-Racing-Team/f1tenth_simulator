@@ -6,8 +6,9 @@ The f1tenth simulator from `f1tenth_gym_ros` is containerised to avoid dependenc
 
 1. Build Dockerfile
 
+Builds an image from the `f1tenth_gym_ros.Dockerfile` and tag it as `f1tenth:gym_ros_foxy`  
+
 ```
-cd simulator
 sudo docker build -f f1tenth_gym_ros.Dockerfile -t f1tenth:gym_ros_foxy .
 ```
 
@@ -26,32 +27,26 @@ rosdep update
 rosdep install -i --from-path src --rosdistro foxy -y
 ```
 
-3. Start container to start the Rviz simulator
+3. Start the container to colcon build (only run once when repo is first cloned)
 
 ```
 ./run_gym_ros.sh
 ```
 
-4. Start container again to develop inside the container and access `f1tenth_ws`
+4. Start container to start the Rviz simulator
 
 ```
-./run_gym_ros.sh # starts a new session in container
-```
-
-5. Go to f1tenth_ws in container
-
-```
-cd ~/f1tenth_ws
-```
-
-6. Run your packages in the container. Build with colcon.
-
-```
-colcon build --packages-select <package name>
+./run_gym_ros.sh
 ```
 
 ## Change maps
 
+### f1tenth_racetracks
+
+1. Open the `./simulator/sim_ws/src/config/sim.yaml` file in a text editor e.g. vim, nano, vscode, ...
+2. Change the `map_path` under `map_parameters` to the path of the desired map. 
+
+### custom ractracks
 1. Copy the `map.png` and `map.yaml` into `./simulator/sim_ws/src/maps`
 2. Change the directory in `./simulator/sim_ws/src/config/sim.yaml`
 
@@ -92,11 +87,6 @@ map_path: '/sim_ws/src/f1tenth_gym_ros/maps/<new_map>'
     2. ```
        colcon build --packages-select <package name>
        ```
-
-## To change map (WIP):
-
-1. edit the `f1tenth_gym_ros.Dockerfile` where #change map is.
-2. rebuild docker image
 
 ## Resources
 
