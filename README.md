@@ -7,7 +7,12 @@ Ubuntu 20.04
 
 ## Setup
 
-1. Build Dockerfile
+1. Clone repository and submodules
+```
+git clone --recursive https://github.com/NTU-Autonomous-Racing-Team/f1tenth_simulator.git
+```
+
+2. Build Dockerfile
 
 Builds an image from the `f1tenth_gym_ros.Dockerfile` and tag it as `f1tenth:gym_ros_foxy`  
 
@@ -15,7 +20,7 @@ Builds an image from the `f1tenth_gym_ros.Dockerfile` and tag it as `f1tenth:gym
 sudo docker build -f f1tenth_gym_ros.Dockerfile -t f1tenth:gym_ros_foxy .
 ```
 
-2. Install dependencies (WIP i.e. SKIP THIS STEP)
+3. Install dependencies (WIP i.e. SKIP THIS STEP)
 
 ```
 sudo apt install -y python3-pip ros-foxy-ackermann-msgs
@@ -30,13 +35,13 @@ rosdep update
 rosdep install -i --from-path src --rosdistro foxy -y
 ```
 
-3. Start the container to colcon build (only run once when repo is first cloned)
+4. Start the container to colcon build (only run once when repo is first cloned)
 
 ```
 ./run_gym_ros.sh
 ```
 
-4. Start container to start the Rviz simulator
+5. Start container to start the Rviz simulator
 
 ```
 ./run_gym_ros.sh
