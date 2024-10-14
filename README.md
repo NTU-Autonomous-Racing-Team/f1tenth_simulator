@@ -1,4 +1,4 @@
-# F1tenth Simulator
+# [DEPRECATED] F1tenth Simulator
 
 The f1tenth simulator from `f1tenth_gym_ros` is containerised to avoid dependency issues and to shortcut setup.
 
